@@ -18,6 +18,14 @@
                 <x-jet-label for="email" value="{{ __('Email') }}" />
                 <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
             </div>
+            <div>
+                <x-jet-label for="nickname" value="{{ __('nickname') }}" />
+                <x-jet-input id="nickname" class="block mt-1 w-full" type="text" name="nickname" :value="old('nickname')" required autofocus autocomplete="nickname" />
+            </div>
+            <div>
+                <x-jet-label for="phone-number" value="{{ __('phone-number') }}" />
+                <x-jet-input id="phone-number" class="block mt-1 w-full" type="tel" name="phone-number" :value="old('phone-number')" required autofocus autocomplete="phone-number" />
+            </div>
 
             <div class="mt-4">
                 <x-jet-label for="password" value="{{ __('Password') }}" />

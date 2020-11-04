@@ -13,6 +13,12 @@
                         <form method="POST" action="{{ route('profile.update') }}">
                             @csrf
 
+                            @if(session('success'))
+                                <div class="alert alert-success" role="alert">
+                                    {{session('success')}}
+                                </div>
+                            @endif
+
                             <input type="hidden" name="id" value="{{$user['id']}}">
 
                             <div class="form-group row">
@@ -98,6 +104,17 @@
                     <div class="card-body">
                         <form method="POST" action="{{ route('profile.passwordUpdate') }}">
                             @csrf
+
+                            @if(session('successPwd'))
+                                <div class="alert alert-success" role="alert">
+                                    {{session('successPwd')}}
+                                </div>
+                            @elseif(session('errorPwd'))
+                                <div class="alert alert-danger" role="alert">
+                                    {{session('errorPwd')}}
+                                </div>
+                            @endif
+                            
                             <div class="form-group row">
                                 <label for="currentPassword" class="col-md-4 col-form-label text-md-right">{{ __('Current Password') }}</label>
 
@@ -142,6 +159,12 @@
                                 </div>
                             </div>
                         </form>
+
+                        <!-- <form method="POST" action="{{ route('welcome', $user->id) }}">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form> -->
                     </div>
             </div>
         </div>

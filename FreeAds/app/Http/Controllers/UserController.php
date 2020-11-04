@@ -94,6 +94,7 @@ class UserController extends Controller
         $user = User::find(Auth::user()->id);
 
         if ($user){
+            $validate = null;
             if ((Auth::user()->email === $request['email']) && (Auth::user()->username === $request['username'])) {
                 $validate = $request->validate([
                     'firstName' => 'required | min:2',
@@ -112,15 +113,19 @@ class UserController extends Controller
                 ]);
             }
 
-            $user->first_name = $request['firstName'];
-            $user->last_name = $request['lastName'];
-            $user->username = $request['username'];
-            $user->phone_number = $request['phone'];
-            $user->email = $request['email'];
+            if ($validate) {
+                $user->first_name = $request['firstName'];
+                $user->last_name = $request['lastName'];
+                $user->username = $request['username'];
+                $user->phone_number = $request['phone'];
+                $user->email = $request['email'];
+                $user->save();
 
-            $user->save();
-
-            return redirect()->back();
+                $request->session()->flash('success', 'Details updated successfully!');
+                return redirect()->back();
+            } else {
+                return redirect()->back();
+            }
         }
         else {
             return redirect()->back();
@@ -132,25 +137,31 @@ class UserController extends Controller
         $user = User::find(Auth::user()->id);
 
         if ($user){
-            if (Auth::user()->password === Hash::make($request['currentPassword'])) {
+            $validate = null;
+            if (Hash::check($request['currentPassword'], $user->password)) {
                 $validate = $request->validate([
                     'newPassword' => 'required | min:8',
                     'newPasswordConfirm' => 'required | min:8'
                 ]);
-            } else {
-                // TODO
-            }
 
-            if ($request['newPassword'] == $request['newPasswordConfirm']) {
-                $user->password = Hash::make($request['newPassword']);
-                $user->save();
+                if ($validate) {
+                    if ($request['newPassword'] == $request['newPasswordConfirm']) {
+                        $user->password = Hash::make($request['newPassword']);
+                        $user->save();
+    
+                        $request->session()->flash('successPwd', 'Password updated successfully!');
+                        return redirect()->back();
+                    } else {
+                        // TODO
+                    }
+                } else {
+                    // TO DO
+                }
             } else {
-                // TODO
+                $request->session()->flash('errorPwd', 'The entered password does not match your current password!');
+                return redirect()->back();
             }
-
-            return redirect()->back();
-        }
-        else {
+        } else {
             return redirect()->back();
         }
     }
@@ -163,6 +174,7 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // User::destroy($id);
+        // return redirect()->route('welcome')->with('success', 'Profile deleted successfully!');
     }
 }

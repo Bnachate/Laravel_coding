@@ -24,8 +24,8 @@ class CreateAddsTable extends Migration
             $table->string('price');
             $table->text('location');
             $table->timestamps();
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
+            //$table->unsignedBigInteger('user_id')->nullable();
+            //$table->foreign('user_id')->references('id')->on('users');
             $table->tinyInteger('category_id');
         });
     

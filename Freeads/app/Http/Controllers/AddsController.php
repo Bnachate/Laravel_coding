@@ -14,7 +14,7 @@ class AddsController extends Controller
      */
     public function index()
     {
-        $adds = Adds::all();
+        $adds = Adds::all()->Paginate(5);
         return view('adds.index')->with('adds', $adds);
     }
 
@@ -47,7 +47,8 @@ class AddsController extends Controller
      */
     public function show($id)
     {
-        //
+        $add = Adds::find($id);
+        return view('adds.show')->with('add', $add);
     }
 
     /**

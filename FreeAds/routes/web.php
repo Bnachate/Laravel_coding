@@ -21,4 +21,9 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('user/{id}', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile.profile');
+Route::get('user/{id}', [App\Http\Controllers\UserController::class, 'index'])->name('profile.user');
+
+Route::post('/update', [App\Http\Controllers\UserController::class, 'update'])->name('profile.update');
+
+Route::post('/passwordUpdate', [App\Http\Controllers\UserController::class, 'passwordUpdate'])->name('profile.passwordUpdate');
+

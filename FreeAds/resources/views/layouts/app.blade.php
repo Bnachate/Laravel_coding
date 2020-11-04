@@ -59,9 +59,7 @@
                                         {{ __('Dashboard') }}
                                     </a>
 
-                                    <a class="dropdown-item" href="{{ route('home') }}"
-                                        onclick="event.preventDefault();
-                                                    document.getElementById('profile-form').submit();">
+                                    <a class="dropdown-item" href="{{ route('profile.profile', Auth::user()->id) }}">
                                         {{ __('Profile') }}
                                     </a>
 

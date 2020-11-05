@@ -23,13 +23,15 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 // Route for User Profile
 Route::get('user/{id}', [App\Http\Controllers\UserController::class, 'index'])->name('profile.user');
-
 Route::post('/update', [App\Http\Controllers\UserController::class, 'update'])->name('profile.update');
-
 Route::post('/passwordUpdate', [App\Http\Controllers\UserController::class, 'passwordUpdate'])->name('profile.passwordUpdate');
-
 Route::delete('/deleteProfile/{id}', [App\Http\Controllers\UserController::class, 'destroy'])->name('profile.delete');
 
 
 // Route for Admin User
 Route::get('/admin/users', [App\Http\Controllers\Admin\AdminUserController::class, 'index'])->name('admin.users.index');
+Route::get('/admin/users/edit/{id}', [App\Http\Controllers\Admin\AdminUserController::class, 'edit'])->name('admin.users.edit');
+Route::post('/admin/users/update/{id}', [App\Http\Controllers\Admin\AdminUserController::class, 'update'])->name('admin.users.update');
+Route::delete('/admin/users/delete/{id}', [App\Http\Controllers\Admin\AdminUserController::class, 'destroy'])->name('admin.users.delete');
+
+

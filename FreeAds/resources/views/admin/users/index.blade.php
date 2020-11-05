@@ -7,6 +7,16 @@
             <div class="card">
                 <div class="card-header">{{ __('Manage Users') }}</div>
 
+                @if(session('success'))
+                    <div class="alert alert-success mt-2" role="alert">
+                        {{session('success')}}
+                    </div>
+                @elseif(session('warning'))
+                    <div class="alert alert-warning mt-2" role="alert">
+                        {{session('warning')}}
+                    </div>
+                @endif
+
                 <div class="card-body">
                     <table class="table text-center">
                         <thead class="thead-light">
@@ -18,6 +28,7 @@
                             <th scope="col">Phone Number</th>
                             <th scope="col">Email</th>
                             <th scope="col">Email Verified</th>
+                            <th scope="col">Admin</th>
                             <th scope="col">Actions</th>
                             </tr>
                         </thead>
@@ -31,7 +42,18 @@
                                     <th>{{ $user->phone_number }}</th>
                                     <th>{{ $user->email }}</th>
                                     <th>{{ $user->email_verified_at }}</th>
-                                    <!-- TODO ADD ACTION                                 -->
+                                    <th>Test</th>
+                                    <th>
+                                        <a href="{{ route('admin.users.edit', $user->id) }}">
+                                            <button type="button" class="btn btn-primary btn-sm">Edit</button> 
+                                        </a>
+
+                                        <form method="POST" action="{{ route('admin.users.delete', $user->id) }}" class="float-right">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                        </form>
+                                    </th>
                                 </tr>
                             @endforeach
                         </tbody>
@@ -44,6 +66,7 @@
                             <th scope="col">Phone Number</th>
                             <th scope="col">Email</th>
                             <th scope="col">Email Verified</th>
+                            <th scope="col">Admin</th>
                             <th scope="col">Actions</th>
                             </tr>
                         </thead>

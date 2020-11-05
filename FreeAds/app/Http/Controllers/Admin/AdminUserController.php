@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 
 class AdminUserController extends Controller
 {
@@ -56,9 +58,13 @@ class AdminUserController extends Controller
      * @param  \App\Models\AdminUser  $adminUser
      * @return \Illuminate\Http\Response
      */
-    public function edit(AdminUser $adminUser)
+    public function edit($id)
+    // AdminUser $adminUser
     {
-        //
+        if (Auth::user()->id == $id) {
+            return redirect()->back()->with('warning', 'You are not allowed to edit yourself.');
+        }
+        return view('admin.users.edit')->with('users', User::find($id));
     }
 
     /**
@@ -68,9 +74,62 @@ class AdminUserController extends Controller
      * @param  \App\Models\AdminUser  $adminUser
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, AdminUser $adminUser)
+    public function update(Request $request, $id)
     {
-        //
+        $user = User::find($id);
+
+        if ($user == $id) {
+            return redirect()->back()->with('warning', 'You are not allowed to edit yourself.');;
+        }
+
+        if ($user){
+            $validate = null;
+            if (($user->email === $request['email']) && ($user->username === $request['username'])) {
+                $validate = $request->validate([
+                    'firstName' => 'required | min:2',
+                    'lastName' => 'required | min:2',
+                    'username' => 'required | min:2',
+                    'phone' => 'required | digits_between:10,12',
+                    'email' => 'required | email'
+                ]);
+            } else {
+                $validate = $request->validate([
+                    'firstName' => 'required | min:2',
+                    'lastName' => 'required | min:2',
+                    'username' => 'required | min:2 | unique:users',
+                    'phone' => 'required | digits_between:10,12 | starts_with:0,+',
+                    'email' => 'required | email | unique:users'
+                ]);
+            }
+
+            if ($validate) {
+                if ($request->filled('password')) {
+                    $user->first_name = $request['firstName'];
+                    $user->last_name = $request['lastName'];
+                    $user->username = $request['username'];
+                    $user->phone_number = $request['phone'];
+                    $user->email = $request['email'];
+                    $user->password = bcrypt($request['password']);
+                    $user->save();
+                } else {
+                    $user->first_name = $request['firstName'];
+                    $user->last_name = $request['lastName'];
+                    $user->username = $request['username'];
+                    $user->phone_number = $request['phone'];
+                    $user->email = $request['email'];
+                    $user->save();
+                }
+                
+
+                $request->session()->flash('success', 'UserDetails updated successfully!');
+                return redirect('/admin/users');
+            } else {
+                return redirect()->back();
+            }
+        }
+        else {
+            return redirect()->back();
+        }
     }
 
     /**
@@ -79,8 +138,13 @@ class AdminUserController extends Controller
      * @param  \App\Models\AdminUser  $adminUser
      * @return \Illuminate\Http\Response
      */
-    public function destroy(AdminUser $adminUser)
+    public function destroy($id)
     {
-        //
+        if (Auth::user()->id == $id) {
+            return redirect()->back()->with('warning', 'You are not allowed to delete yourself.');
+        }
+
+        User::destroy($id);
+        return redirect()->route('/admin/users')->with('success', 'User deleted successfully!');
     }
 }

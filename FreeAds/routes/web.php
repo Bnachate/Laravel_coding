@@ -27,4 +27,5 @@ Route::post('/update', [App\Http\Controllers\UserController::class, 'update'])->
 
 Route::post('/passwordUpdate', [App\Http\Controllers\UserController::class, 'passwordUpdate'])->name('profile.passwordUpdate');
 
-Route::post('/home', [App\Http\Controllers\UserController::class, 'destroy'])->name('welcome');
+Route::delete('/deleteProfile/{id}', [App\Http\Controllers\UserController::class, 'destroy'])->name('profile.delete');
+

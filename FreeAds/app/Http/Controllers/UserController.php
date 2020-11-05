@@ -108,7 +108,7 @@ class UserController extends Controller
                     'firstName' => 'required | min:2',
                     'lastName' => 'required | min:2',
                     'username' => 'required | min:2 | unique:users',
-                    'phone' => 'required | digits_between:10,12',
+                    'phone' => 'required | digits_between:10,12 | starts_with:0,+',
                     'email' => 'required | email | unique:users'
                 ]);
             }
@@ -174,7 +174,8 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        // User::destroy($id);
-        // return redirect()->route('welcome')->with('success', 'Profile deleted successfully!');
+        $user = User::find($id);
+        $user->delete();
+        return redirect('/login')->with('success', 'Profile deleted successfully!');
     }
 }

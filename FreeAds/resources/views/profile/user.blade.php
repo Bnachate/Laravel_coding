@@ -160,11 +160,15 @@
                             </div>
                         </form>
 
-                        <!-- <form method="POST" action="{{ route('welcome', $user->id) }}">
+                        <form method="POST" action="{{ route('profile.delete', $user->id) }}">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger">Delete</button>
-                        </form> -->
+                            <div class="form-group row mb-0">
+                                <div class="col-md-6 offset-md-4">
+                                    <button type="submit" class="btn btn-danger">Delete Account</button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
             </div>
         </div>

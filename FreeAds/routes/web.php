@@ -21,6 +21,7 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+// Route for User Profile
 Route::get('user/{id}', [App\Http\Controllers\UserController::class, 'index'])->name('profile.user');
 
 Route::post('/update', [App\Http\Controllers\UserController::class, 'update'])->name('profile.update');
@@ -29,3 +30,6 @@ Route::post('/passwordUpdate', [App\Http\Controllers\UserController::class, 'pas
 
 Route::delete('/deleteProfile/{id}', [App\Http\Controllers\UserController::class, 'destroy'])->name('profile.delete');
 
+
+// Route for Admin User
+Route::get('/admin/users', [App\Http\Controllers\Admin\AdminUserController::class, 'index'])->name('admin.users.index');

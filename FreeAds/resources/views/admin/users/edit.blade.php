@@ -97,11 +97,11 @@
                                 </div>
                             </div>
 
-                            <!-- <div class="form-group row">
+                            <div class="form-group row">
                                 <label for="admin" class="col-md-4 col-form-label text-md-right">{{ __('Admin') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="admin" value="{{$users['admin']}}" type="text" class="form-control @error('admin') is-invalid @enderror" name="admin" value="{{ old('lastName') }}" required autocomplete="admin" autofocus>
+                                    <input id="admin" value="{{$users['type']}}" type="text" class="form-control @error('admin') is-invalid @enderror" name="admin" value="{{ old('type') }}" required autocomplete="admin" autofocus>
 
                                     @error('admin')
                                         <span class="invalid-feedback" role="alert">
@@ -109,7 +109,7 @@
                                         </span>
                                     @enderror
                                 </div>
-                            </div> -->
+                            </div>
 
                             <div class="form-group row mb-0">
                                 <div class="col-md-6 offset-md-4">

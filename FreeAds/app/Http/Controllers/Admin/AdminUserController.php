@@ -56,6 +56,7 @@ class AdminUserController extends Controller
             'phone' => 'required | digits_between:10,12 | starts_with:0,+',
             'email' => 'required | email | unique:users',
             'password' => 'required | string | min:8 | confirmed',
+            'admin' => 'required | string',
         ]);
         
         User::create([
@@ -65,6 +66,7 @@ class AdminUserController extends Controller
             'phone_number' => $request['phone'],
             'email' => $request['email'],
             'password' => Hash::make($request['password']),
+            'type' => $request['admin'],
         ]);
 
         return redirect('/admin/users')->with('success', 'User added successfully!');
@@ -115,11 +117,12 @@ class AdminUserController extends Controller
             $validate = null;
             if (($user->email === $request['email']) && ($user->username === $request['username'])) {
                 $validate = $request->validate([
-                    'firstName' => 'required | min:2',
-                    'lastName' => 'required | min:2',
-                    'username' => 'required | min:2',
-                    'phone' => 'required | digits_between:10,12',
-                    'email' => 'required | email'
+                    'firstName' => 'required | string | min:2 | max:255',
+                    'lastName' => 'required | string | min:2 | max:255',
+                    'username' => 'required | string | min:2 | max:255',
+                    'phone' => 'required | digits_between:10,12 | starts_with:0,+',
+                    'email' => 'required | email ',
+                    'admin' => 'required | string',
                 ]);
             } else {
                 $validate = $request->validate([
@@ -127,7 +130,8 @@ class AdminUserController extends Controller
                     'lastName' => 'required | min:2',
                     'username' => 'required | min:2 | unique:users',
                     'phone' => 'required | digits_between:10,12 | starts_with:0,+',
-                    'email' => 'required | email | unique:users'
+                    'email' => 'required | email | unique:users',
+                    'admin' => 'required | string',
                 ]);
             }
 
@@ -139,6 +143,7 @@ class AdminUserController extends Controller
                     $user->phone_number = $request['phone'];
                     $user->email = $request['email'];
                     $user->password = bcrypt($request['password']);
+                    $user->type = $request['admin'];
                     $user->save();
                 } else {
                     $user->first_name = $request['firstName'];
@@ -146,6 +151,7 @@ class AdminUserController extends Controller
                     $user->username = $request['username'];
                     $user->phone_number = $request['phone'];
                     $user->email = $request['email'];
+                    $user->type = $request['admin'];
                     $user->save();
                 }
                 

@@ -95,6 +95,14 @@ class UserController extends Controller
 
         if ($user){
             $validate = null;
+            // $validate = $request->validate([
+            //     'firstName' => 'required | min:2',
+            //     'lastName' => 'required | min:2',
+            //     'username' => 'required | min:2 | Rule::unique("users")->ignore($user->id)',
+            //     'phone' => 'required | digits_between:10,12',
+            //     'email' => 'required | email'
+            // ]);
+
             if ((Auth::user()->email === $request['email']) && (Auth::user()->username === $request['username'])) {
                 $validate = $request->validate([
                     'firstName' => 'required | min:2',
@@ -152,7 +160,8 @@ class UserController extends Controller
                         $request->session()->flash('successPwd', 'Password updated successfully!');
                         return redirect()->back();
                     } else {
-                        // TODO
+                        $request->session()->flash('errorPwd', 'New password do not match!');
+                        return redirect()->back();
                     }
                 } else {
                     // TO DO

@@ -34,6 +34,12 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
 
+                    <!-- @if({{ $user->type }} == 'admin')
+                        <a href="{{ route('admin.users.index') }}">
+                        Manage Users
+                        </a>
+                    @endif -->
+                    <!-- TODO admin page see Manage USers -->
                     </ul>
 
                     <!-- Right Side Of Navbar -->

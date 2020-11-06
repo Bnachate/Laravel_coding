@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 
 class AdminUserController extends Controller
@@ -17,7 +19,7 @@ class AdminUserController extends Controller
      */
     public function index()
     {
-        return view('admin.users.index')->with('users', User::all());
+        return view('admin.users.index')->with('users', User::latest()->paginate(5));
     }
 
     /**
@@ -27,7 +29,7 @@ class AdminUserController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.users.create');
     }
 
     /**
@@ -38,7 +40,25 @@ class AdminUserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'firstName' => 'required | string | min:2 | max:255',
+            'lastName' => 'required | string | min:2 | max:255',
+            'username' => 'required | string | min:2 | max:255 | unique:users',
+            'phone' => 'required | digits_between:10,12 | starts_with:0,+',
+            'email' => 'required | email | unique:users',
+            'password' => 'required | string | min:8 | confirmed',
+        ]);
+        
+        User::create([
+            'first_name' => $request['firstName'],
+            'last_name' => $request['lastName'],
+            'username' => $request['username'],
+            'phone_number' => $request['phone'],
+            'email' => $request['email'],
+            'password' => Hash::make($request['password']),
+        ]);
+
+        return redirect('/admin/users')->with('success', 'User added successfully!');
     }
 
     /**

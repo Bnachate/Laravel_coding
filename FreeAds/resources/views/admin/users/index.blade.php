@@ -17,6 +17,12 @@
                     </div>
                 @endif
 
+                <div class="ml-4 mt-2">
+                    <a href="{{ route('admin.users.create') }}">
+                        <button type="button" class="btn btn-success">{{ __('Add User') }}</button>
+                    </a>
+                </div>
+
                 <div class="card-body">
                     <table class="table text-center">
                         <thead class="thead-light">
@@ -72,6 +78,7 @@
                         </thead>
                     </table>
 
+                    {{$users->links()}}
                 </div>
             </div>
         </div>

@@ -30,6 +30,8 @@ Route::delete('/deleteProfile/{id}', [App\Http\Controllers\UserController::class
 
 // Route for Admin User
 Route::get('/admin/users', [App\Http\Controllers\Admin\AdminUserController::class, 'index'])->name('admin.users.index');
+Route::post('/admin/users', [App\Http\Controllers\Admin\AdminUserController::class, 'store'])->name('admin.users.index');
+Route::get('/admin/users/create', [App\Http\Controllers\Admin\AdminUserController::class, 'create'])->name('admin.users.create');
 Route::get('/admin/users/edit/{id}', [App\Http\Controllers\Admin\AdminUserController::class, 'edit'])->name('admin.users.edit');
 Route::post('/admin/users/update/{id}', [App\Http\Controllers\Admin\AdminUserController::class, 'update'])->name('admin.users.update');
 Route::delete('/admin/users/delete/{id}', [App\Http\Controllers\Admin\AdminUserController::class, 'destroy'])->name('admin.users.delete');

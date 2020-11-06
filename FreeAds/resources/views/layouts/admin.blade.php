@@ -33,13 +33,9 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
-                    <!-- @if({{ $user->type }} == 'admin')
-                        <a href="{{ route('admin.users.index') }}">
-                        Manage Users
-                        </a>
-                    @endif -->
-                    <!-- TODO admin page see Manage USers -->
+                        <li class="nav-item">
+                            <a href="{{ route('admin.users.index') }}">Manage Users</a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

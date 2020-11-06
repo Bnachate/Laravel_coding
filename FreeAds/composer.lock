@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "be2dbc038169d125530c3dd7b43e878d",
+    "content-hash": "8e9e497e46d5eaeb5085892fa49e2115",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1246,8 +1246,9 @@
                 "issues": "https://github.com/LaravelCollective/html/issues",
                 "source": "https://github.com/LaravelCollective/html"
             },
-            "time": "2020-09-07T19:59:40+00:00"
-        },
+            "time": "2020-09-07T19:59:40+00:00",
+                "source": "https://github.com/laravel/ui/tree/v3.0.0"
+            },
         {
             "name": "league/commonmark",
             "version": "1.5.7",

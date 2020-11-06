@@ -12,7 +12,7 @@
 </head>
 <body>
 @include('Inc.navbar')
-<div class="container">
+<div class="container bg">
 @include('Inc.errorsuccess')
 @yield('content')
 </div>

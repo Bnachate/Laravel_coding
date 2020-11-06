@@ -115,6 +115,9 @@
                                 </div>
                             @endif
                             
+                            <input type="hidden" name="id" value="{{$user['id']}}"> 
+                            <!-- TO DELETE IF BUG -->
+
                             <div class="form-group row">
                                 <label for="currentPassword" class="col-md-4 col-form-label text-md-right">{{ __('Current Password') }}</label>
 
@@ -154,7 +157,7 @@
                             <div class="form-group row mb-0">
                                 <div class="col-md-6 offset-md-4">
                                     <button type="submit" class="btn btn-primary">
-                                        {{ __('Update Details') }}
+                                        {{ __('Update Password') }}
                                     </button>
                                 </div>
                             </div>

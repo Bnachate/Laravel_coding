@@ -26,7 +26,7 @@
     @if(count($adds) >= 1)
     @foreach($adds as $add)
 
-    <div class="card mb-3 displayed opacity" style="max-width: 540px;">
+    <div class="card mb-3 displayed opacity mb-5" style="max-width: 540px;">
         <div class="row no-gutters">
             <div class="col-md-4">
                 <a href="/adds/{{$add->id}}"> <img src="{{$add->image}}" style="height:100%; width:100%"

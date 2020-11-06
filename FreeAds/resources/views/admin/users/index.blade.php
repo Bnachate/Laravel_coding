@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
 <div class="container">
@@ -48,7 +48,7 @@
                                     <th>{{ $user->phone_number }}</th>
                                     <th>{{ $user->email }}</th>
                                     <th>{{ $user->email_verified_at }}</th>
-                                    <th>Test</th>
+                                    <th>{{ $user->type }}</th>
                                     <th>
                                         <a href="{{ route('admin.users.edit', $user->id) }}">
                                             <button type="button" class="btn btn-primary btn-sm">Edit</button> 

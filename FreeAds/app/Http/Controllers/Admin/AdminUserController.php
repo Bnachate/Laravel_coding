@@ -12,6 +12,15 @@ use Illuminate\Support\Facades\Validator;
 
 class AdminUserController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    public function admin()
+    {
+        return redirect('admin/users');
+    }
+
     /**
      * Display a listing of the resource.
      *

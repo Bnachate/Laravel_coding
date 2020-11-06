@@ -11,6 +11,14 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
+    const ADMIN_TYPE = 'admin';
+    const DEFAULT_TYPE = 'guest';
+
+    public function isAdmin()
+    {
+        return $this->type === self::ADMIN_TYPE;
+    }
+
     /**
      * The attributes that are mass assignable.
      *

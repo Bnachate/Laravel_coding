@@ -21,11 +21,12 @@ class CreateAddsTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->mediumText('description');
-            $table->string('price');
+            $table->integer('price');
             $table->text('location');
+            $table->string('image');
             $table->timestamps();
-            //$table->unsignedBigInteger('user_id')->nullable();
-            //$table->foreign('user_id')->references('id')->on('users');
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->foreign('user_id')->references('id')->on('users');
             $table->tinyInteger('category_id');
         });
     

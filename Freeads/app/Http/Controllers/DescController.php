@@ -8,7 +8,7 @@ class DescController extends Controller
 {
     public function index()
     {
-        return view('adds.index');
+        return view('about.index');
     }
     public function about()
     {

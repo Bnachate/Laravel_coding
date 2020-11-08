@@ -36,6 +36,9 @@
                         <li class="nav-item">
                             <a href="{{ route('admin.users.index') }}">Manage Users</a>
                         </li>
+                        <li>
+                            <a class="ml-2" href="{{ route('admin.adds.index') }}">Manage Adds</a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -57,8 +60,12 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="/home">
+                                    <a class="dropdown-item" href="/admin/users">
                                         {{ __('Dashboard') }}
+                                    </a>
+
+                                    <a class="dropdown-item" href="{{ route('admin.users.index', Auth::user()->id) }}">
+                                        {{ __('Admin Dashboard') }}
                                     </a>
 
                                     <a class="dropdown-item" href="{{ route('profile.user', Auth::user()->id) }}">

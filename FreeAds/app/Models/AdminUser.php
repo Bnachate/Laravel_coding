@@ -10,7 +10,7 @@ use Illuminate\Notifications\Notifiable;
 class AdminUser extends Model
 {
     use HasFactory, Notifiable;
-
+    
     /**
      * The attributes that are mass assignable.
      *

@@ -24,7 +24,7 @@
                 </div>
 
                 <div class="card-body">
-                    <table class="table text-center">
+                    <table class="table table-bordered table-condensed table-responsive" style="display:table">
                         <thead class="thead-light">
                             <tr>
                             <th scope="col">#</th>
@@ -41,7 +41,7 @@
                         <tbody>
                             @foreach($users as $user)
                                 <tr>
-                                    <th>{{ $user->id}}</th>
+                                    <th>{{ $user->id }}</th>
                                     <th>{{ $user->first_name }}</th>
                                     <th>{{ $user->last_name }}</th>
                                     <th>{{ $user->username }}</th>

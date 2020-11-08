@@ -33,7 +33,6 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -58,6 +57,12 @@
                                     <a class="dropdown-item" href="/home">
                                         {{ __('Dashboard') }}
                                     </a>
+
+                                    @if(auth()->user()->type == 'admin')
+                                        <a class="dropdown-item" href="{{ route('admin.users.index', Auth::user()->id) }}">
+                                            {{ __('Admin Dashboard') }}
+                                        </a>
+                                    @endif
 
                                     <a class="dropdown-item" href="{{ route('profile.user', Auth::user()->id) }}">
                                         {{ __('Profile') }}

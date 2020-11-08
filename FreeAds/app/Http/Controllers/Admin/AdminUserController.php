@@ -49,7 +49,8 @@ class AdminUserController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $user = New User;
+        $validate = $request->validate([
             'firstName' => 'required | string | min:2 | max:255',
             'lastName' => 'required | string | min:2 | max:255',
             'username' => 'required | string | min:2 | max:255 | unique:users',
@@ -59,15 +60,17 @@ class AdminUserController extends Controller
             'admin' => 'required | string',
         ]);
         
-        User::create([
-            'first_name' => $request['firstName'],
-            'last_name' => $request['lastName'],
-            'username' => $request['username'],
-            'phone_number' => $request['phone'],
-            'email' => $request['email'],
-            'password' => Hash::make($request['password']),
-            'type' => $request['admin'],
-        ]);
+        if ($validate)
+        {
+            $user->first_name = $request['firstName'];
+            $user->last_name = $request['lastName'];
+            $user->username = $request['username'];
+            $user->phone_number = $request['phone'];
+            $user->email = $request['email'];
+            $user->password = Hash::make($request['password']);
+            $user->type = $request['admin'];
+            $user->save();
+        }
 
         return redirect('/admin/users')->with('success', 'User added successfully!');
     }

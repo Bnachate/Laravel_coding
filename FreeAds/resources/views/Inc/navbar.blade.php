@@ -62,30 +62,41 @@
                                 </li>
                             @endif
                         @else
-                            <li class="border border-primary btn btn-dark nav-item dropdown border border-primary">
-                                <a id="navbarDropdown" style="color:#FFFFFF;" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                   <strong> {{ Auth::user()->username }}</strong>
+                        <li class="border border-primary btn btn-dark nav-item dropdown border border-primary">
+                            <a id="navbarDropdown" style="color:#FFFFFF;" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <strong> {{ Auth::user()->username }}</strong>
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" style="color:#000000" href="/home">
+                                <strong>  {{ __('Dashboard') }}</strong>
                                 </a>
 
-                            <a class="dropdown-item" style="color:#000000" href="{{ route('profile.user', Auth::user()->id) }}">
-                            <strong>{{ __('Profile') }}</strong>
-                            </a>
+                                @if(auth()->user()->type == 'admin')
+                                    <a class="dropdown-item" style="color:#000000" href="{{ route('admin.users.index', Auth::user()->id) }}">
+                                        <strong>{{ __('Admin Dashboard') }}</strong>
+                                    </a>
+                                @endif
 
-                            <form id="profile-form" action="{{ route('home') }}" method="POST" class="d-none">
-                                @csrf
-                            </form>
-                
-                            <a class="dropdown-item" style="color:#000000" href="{{ route('logout') }}"
-                                onclick="event.preventDefault();
-                                        document.getElementById('logout-form').submit();">
-                                <strong> {{ __('Logout') }}</strong>
-                            </a>
+                                <a class="dropdown-item" style="color:#000000" href="{{ route('profile.user', Auth::user()->id) }}">
+                                <strong>{{ __('Profile') }}</strong>
+                                </a>
 
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                @csrf
-                            </form>
-                        </div>
-                    </li>
+                                <form id="profile-form" action="{{ route('home') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
+                    
+                                <a class="dropdown-item" style="color:#000000" href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                            document.getElementById('logout-form').submit();">
+                                    <strong> {{ __('Logout') }}</strong>
+                                </a>
+
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
+                            </div>
+                        </li>
                 @endguest
             </ul>
         </div>

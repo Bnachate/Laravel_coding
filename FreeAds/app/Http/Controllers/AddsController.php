@@ -178,4 +178,46 @@ class AddsController extends Controller
         ->with('adds', $adds)
         ->with('adds', $joins);
     }
+    public function category_console()
+    {        //$adds = Adds::paginate(5);
+        $adds = Adds::orderBy('created_at', 'asc')->paginate(4);
+        $joins = \DB::table('adds')
+            ->join('categories', 'adds.category_id', '=', 'categories.id')
+            ->join('users', 'adds.user_id', '=', 'users.id')
+            ->select('adds.*', 'users.username', 'categories.category')
+            //->select('adds.*', 'categories.category')
+            ->paginate(4);
+        
+        return view('adds.category_console')
+        ->with('adds', $adds)
+        ->with('adds', $joins);
+    }
+    public function category_games()
+    {        //$adds = Adds::paginate(5);
+        $adds = Adds::orderBy('created_at', 'asc')->paginate(4);
+        $joins = \DB::table('adds')
+            ->join('categories', 'adds.category_id', '=', 'categories.id')
+            ->join('users', 'adds.user_id', '=', 'users.id')
+            ->select('adds.*', 'users.username', 'categories.category')
+            //->select('adds.*', 'categories.category')
+            ->paginate(4);
+        
+        return view('adds.category_games')
+        ->with('adds', $adds)
+        ->with('adds', $joins);
+    }
+    public function category_accessories()
+    {        //$adds = Adds::paginate(5);
+        $adds = Adds::orderBy('created_at', 'asc')->paginate(4);
+        $joins = \DB::table('adds')
+            ->join('categories', 'adds.category_id', '=', 'categories.id')
+            ->join('users', 'adds.user_id', '=', 'users.id')
+            ->select('adds.*', 'users.username', 'categories.category')
+            //->select('adds.*', 'categories.category')
+            ->paginate(4);
+        
+        return view('adds.category_accessories')
+        ->with('adds', $adds)
+        ->with('adds', $joins);
+    }
 }

@@ -4,21 +4,13 @@ namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable implements MustVerifyEmail
+class AdminUser extends Model
 {
     use HasFactory, Notifiable;
-
-    const ADMIN_TYPE = 'admin';
-    const DEFAULT_TYPE = 'guest';
-
-    public function isAdmin()
-    {
-        return $this->type === self::ADMIN_TYPE;
-    }
-
+    
     /**
      * The attributes that are mass assignable.
      *

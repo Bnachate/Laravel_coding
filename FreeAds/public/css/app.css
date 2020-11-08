@@ -10928,12 +10928,6 @@ html {
   margin-left: 40em;
 }
 
-.table {
-  caption-side: top;
-  position: absolute;
-  left: centrer;
-}
-
 .displayed {
   display: block;
   margin-left: auto;

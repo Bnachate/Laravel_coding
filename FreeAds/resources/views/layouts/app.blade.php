@@ -21,10 +21,10 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-lg navbar-light bg-dark">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                <a class="navbar-brand" style="color:#FFFFFF; font-size:25px" href="{{ url('/') }}">
+                    {{ __('GameHub') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -40,48 +40,50 @@
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link" style="color:#FFFFFF;"  href="{{ route('login') }}"><strong>{{ __('Login') }}</strong></a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link" style="color:#FFFFFF;"  href="{{ route('register') }}"><strong>{{ __('Register') }}</strong></a>
                                 </li>
                             @endif
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->username }}
+                                <a id="navbarDropdown" style="color:#FFFFFF;" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    <strong>{{ Auth::user()->username }}</strong>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="/home">
-                                        {{ __('Dashboard') }}
+                                    <a class="dropdown-item" style="color:#000000" href="/home">
+                                    <strong>  {{ __('Dashboard') }}</strong>
                                     </a>
 
                                     @if(auth()->user()->type == 'admin')
-                                        <a class="dropdown-item" href="{{ route('admin.users.index', Auth::user()->id) }}">
-                                            {{ __('Admin Dashboard') }}
+                                        <a class="dropdown-item" style="color:#000000" href="{{ route('admin.users.index', Auth::user()->id) }}">
+                                            <strong>{{ __('Admin Dashboard') }}</strong>
                                         </a>
                                     @endif
 
-                                    <a class="dropdown-item" href="{{ route('profile.user', Auth::user()->id) }}">
-                                        {{ __('Profile') }}
+                                    <a class="dropdown-item" style="color:#000000" href="{{ route('profile.user', Auth::user()->id) }}">
+                                    <strong>{{ __('Profile') }}</strong>
                                     </a>
 
                                     <form id="profile-form" action="{{ route('home') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
                         
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                    <a class="dropdown-item" style="color:#000000" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
                                                 document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        <strong> {{ __('Logout') }}</strong>
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
                                 </div>
+
+                                
                             </li>
                         @endguest
                     </ul>

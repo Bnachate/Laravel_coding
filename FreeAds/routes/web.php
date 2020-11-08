@@ -31,7 +31,15 @@ Route::get('/contact', 'App\Http\Controllers\DescController@contact');
 //Route::resource('/posts', 'App\Http\Controllers\PostsController');
 //Route::resource('/index', 'App\Http\Controllers\AddsController');
 Route::get('/', 'App\Http\Controllers\AddsController@index');
+
+Route::get('/adds/category_console', 'App\Http\Controllers\AddsController@category_console');
+Route::get('/adds/category_games', 'App\Http\Controllers\AddsController@category_games');
+Route::get('/adds/category_accessories', 'App\Http\Controllers\AddsController@category_accessories');
+
 Route::resource('/adds', 'App\Http\Controllers\AddsController');
+
+
+
 
 Route::get('Inc/search-ad', 'App\Http\Controllers\AddsController@search')->name('search.ad');
 

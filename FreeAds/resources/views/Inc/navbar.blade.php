@@ -26,7 +26,7 @@
 
 <div id="app">
 <nav class="navbar navbar-expand-lg navbar-light bg-dark">
-    <a class="navbar-brand" style="color:#FFFFFF; font-size:40px" href="/">FreeAds</a>
+    <a class="navbar-brand" style="color:#FFFFFF; font-size:40px" href="/">GameHub</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -41,19 +41,19 @@
         
       <li>
         
-  <button class="border-0 btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Dropdown button
+  <button class="border border-primary btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+   <strong> Categories</strong>
   </button>
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="#">Games Console</a>
-    <a class="dropdown-item" href="#">Video Games</a>
-    <a class="dropdown-item" href="#">Accessories</a>
+    <a class="dropdown-item" href="/adds/category_console">Games Console</a>
+    <a class="dropdown-item" href="/adds/category_games/">Video Games</a>
+    <a class="dropdown-item" href="/adds/category_accessories/">Accessories</a>
   </div>
 
 </li>
 </ul>
         <!-- Right Side Of Navbar -->
-        <ul class="navbar-nav ml-auto">
+        <ul class="navbar-nav ml-auto mr-5">
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
@@ -65,7 +65,7 @@
                                 </li>
                             @endif
                         @else
-                            <li class="nav-item dropdown">
+                            <li class="border border-primary btn btn-dark nav-item dropdown border border-primary">
                                 <a id="navbarDropdown" style="color:#FFFFFF;" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                    <strong> {{ Auth::user()->username }}</strong>
                                 </a>
@@ -96,10 +96,7 @@
                             </li>
                         @endguest
                     </ul>
-        <form class="form-inline ml-5 my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
+       
     </div>
     
         

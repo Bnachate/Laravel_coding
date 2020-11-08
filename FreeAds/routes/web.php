@@ -13,7 +13,7 @@ use App\Models\Adds;
 | contains the "web" middleware group. Now create something great!
 |
 
-*/
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -30,8 +30,10 @@ Route::get('/contact', 'App\Http\Controllers\DescController@contact');
 
 //Route::resource('/posts', 'App\Http\Controllers\PostsController');
 //Route::resource('/index', 'App\Http\Controllers\AddsController');
-//Route::get('/create', 'App\Http\Controllers\AddsController@create');
+Route::get('/', 'App\Http\Controllers\AddsController@index');
 Route::resource('/adds', 'App\Http\Controllers\AddsController');
+
+Route::get('Inc/search-ad', 'App\Http\Controllers\AddsController@search')->name('search.ad');
 
 
 Auth::routes();

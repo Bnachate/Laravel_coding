@@ -12,15 +12,7 @@
 </head>
 <body>
 @include('Inc.navbar')
-<div class="container bg">
-<form action="{{route('search.ad')}}" method=GET class="form-inline d-flex md-form form-sm ml-5">
-        <i class="fas fa-search" aria-hidden="true"></i>
-            <input type="text" class="form-control form-control-sm ml-0 w-50 mt-4" name="s" placeholder="Rechercher" value="{{isset($s) ? $s : '' }}">
-        </i>
-        <div class="form-group">
-            <button class="btn btn-outline-secondary mt-4 ml-3 form-inline d-flex" type="submit">Rechercher</button>
-        </div>
-</form>
+<div class="container aboutus">
 @include('Inc.errorsuccess')
 @yield('content')
 </div>

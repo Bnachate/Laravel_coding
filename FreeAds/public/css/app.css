@@ -10908,6 +10908,18 @@ html {
   height: 100%;
 }
 
+.aboutus {
+  /* The image used */
+  background-image: url("https://trendjackers.com/wp-content/uploads/2017/04/Great-Examples-of-Modern-Video-Game-Marketing.jpg");
+  /* Full height */
+  min-height: 100%;
+  min-width: 100%;
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 .bg {
   /* The image used */
   background-image: url("https://wallpapercave.com/wp/wp3601650.jpg");

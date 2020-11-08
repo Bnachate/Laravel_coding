@@ -4,19 +4,19 @@
     <h1> Création d'articles</h1>
     {!! Form::open(['action' => '\App\Http\Controllers\AddsController@store', 'method' => 'POST']) !!}
         <div class="form-group"> 
-        {{Form::label('title', 'Titre')}}
-        {{Form::text('title', '', ['class' => 'form-control', 'placeholder' => 'Ecrivez le titre de votre produit'])}}
+        {{Form::label('title', 'Title')}}
+        {{Form::text('title', '', ['class' => 'form-control', 'placeholder' => 'write the title'])}}
         </div>
         <div class="form-group"> 
-        {{Form::label('price', 'Prix')}}
-        {{Form::text('price', '', ['class' => 'form-control', 'placeholder' => 'Ecrivez le prix de votre produit'])}}
+        {{Form::label('price', 'Price')}}
+        {{Form::text('price', '', ['class' => 'form-control', 'placeholder' => 'write your price product'])}}
         </div>
         <div class="form-group"> 
-        {{Form::label('location', 'Adresse')}}
-        {{Form::text('location', '', ['class' => 'form-control', 'placeholder' => 'Ecrivez votre adresse'])}}
+        {{Form::label('location', 'Address')}}
+        {{Form::text('location', '', ['class' => 'form-control', 'placeholder' => 'where are you come from?'])}}
         </div>
         <div class="form-group"> 
-        {{Form::label('category_id', 'Catégorie')}}
+        {{Form::label('category_id', 'Category')}}
         {{Form::select('category_id', ['1' => 'Game Console', '2' => 'Video Games', '3' => 'Accessories'])}};
         </div>
         <div class="form-group"> 
@@ -24,8 +24,9 @@
         </div>
         <div class="form-group"> 
         {{Form::label('description', 'Description')}}
-        {{Form::textarea('description', '', ['class' => 'form-control', 'placeholder' => 'Description de votre produit'])}}
+        {{Form::textarea('description', '', ['class' => 'form-control', 'placeholder' => 'describe your add'])}}
         </div>
-        {{Form::submit('Créer votre article', ['class' => 'btn btn-lg btn-primary'])}}
+        
+        {{Form::submit('Create your add', ['class' => 'btn btn-lg btn-primary'])}}
     {!! Form::close() !!}
 @endsection

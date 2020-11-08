@@ -26,7 +26,7 @@ class CreateAddsTable extends Migration
             $table->string('image');
             $table->timestamps();
             $table->unsignedBigInteger('user_id')->nullable();
-            $table->foreign('user_id')->references('id')->on('users');
+            //$table->foreign('user_id')->references('id')->on('users');
             $table->tinyInteger('category_id');
         });
     

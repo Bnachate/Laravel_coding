@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Adds extends Model
 {
     use HasFactory;
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User');
+    }
+    public function scopeSearch($query, $s){
+
+        return $query->where('title', 'like', '%' .$s. '%')
+            ->orWhere('description', 'like', '%' .$s. '%');
+    }
 }

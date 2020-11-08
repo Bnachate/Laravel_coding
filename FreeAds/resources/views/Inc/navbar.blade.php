@@ -26,7 +26,7 @@
 
 <div id="app">
 <nav class="navbar navbar-expand-lg navbar-light bg-dark">
-    <a class="navbar-brand" style="color:#FFFFFF" href="#">Navbar</a>
+    <a class="navbar-brand" style="color:#FFFFFF; font-size:40px" href="/">FreeAds</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -34,32 +34,31 @@
 
     <div class="collapse navbar-collapse" style="color:#FFFFFF" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" style="color:#FFFFFF" href="/">Freeads</a>
-            </li>
+           
             <li class="nav-item">
-                <a class="nav-link" style="color:#FFFFFF" href="/about">About</a>
+                <a class="nav-link" style="color:#FFFFFF" href="/about">About Us</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" style="color:#FFFFFF" href="/contact">Contact</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/index">index</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" style="color:#FFFFFF" href="/adds">Adds</a>
-            </li>
-        </ul>
+        
+      <li>
+        
+  <button class="border-0 btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Dropdown button
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="#">Games Console</a>
+    <a class="dropdown-item" href="#">Video Games</a>
+    <a class="dropdown-item" href="#">Accessories</a>
+  </div>
+
+</li>
+</ul>
         <!-- Right Side Of Navbar -->
         <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
-                            @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link" style="color:#FFFFFF" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                </li>
-                            @endif
-                            
+                            <li class="nav-item">
+                                <a class="nav-link" style="color:#FFFFFF" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
                                     <a class="nav-link" style="color:#FFFFFF" href="{{ route('register') }}">{{ __('Register') }}</a>
@@ -67,15 +66,27 @@
                             @endif
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" style="color:#FFFFFF" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
+                                <a id="navbarDropdown" style="color:#FFFFFF;" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                   <strong> {{ Auth::user()->username }}</strong>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" style="color:#FFFFFF" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                    <a class="dropdown-item" style="color:#000000" href="/home">
+                                    <strong>  {{ __('Dashboard') }}</strong>
+                                    </a>
+
+                                    <a class="dropdown-item" style="color:#000000" href="{{ route('profile.user', Auth::user()->id) }}">
+                                    <strong>{{ __('Profile') }}</strong>
+                                    </a>
+
+                                    <form id="profile-form" action="{{ route('home') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                        
+                                    <a class="dropdown-item" style="color:#000000" href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();
+                                                document.getElementById('logout-form').submit();">
+                                       <strong> {{ __('Logout') }}</strong>
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
